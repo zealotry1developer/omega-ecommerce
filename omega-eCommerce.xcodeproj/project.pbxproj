@@ -14,6 +14,7 @@
 		188FC5EF286FEEE700009B7E /* Raleway-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 188FC5EC286FEEE700009B7E /* Raleway-SemiBold.ttf */; };
 		188FC5F0286FEEE700009B7E /* Raleway-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 188FC5ED286FEEE700009B7E /* Raleway-Regular.ttf */; };
 		188FC5F1286FEEE700009B7E /* Raleway-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 188FC5EE286FEEE700009B7E /* Raleway-Bold.ttf */; };
+		188FC5F6286FF07000009B7E /* OnBoardingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188FC5F5286FF07000009B7E /* OnBoardingPage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		188FC5ED286FEEE700009B7E /* Raleway-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Regular.ttf"; sourceTree = "<group>"; };
 		188FC5EE286FEEE700009B7E /* Raleway-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Bold.ttf"; sourceTree = "<group>"; };
 		188FC5F3286FEF9100009B7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		188FC5F5286FF07000009B7E /* OnBoardingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingPage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 		182742F4286FEB4900A4ED42 /* omega-eCommerce */ = {
 			isa = PBXGroup;
 			children = (
+				188FC5F4286FF03E00009B7E /* View */,
 				188FC5F3286FEF9100009B7E /* Info.plist */,
 				18CF55B2286FEE01001CBECF /* Fonts */,
 				182742F5286FEB4900A4ED42 /* omega_eCommerceApp.swift */,
@@ -74,6 +77,14 @@
 				182742FC286FEB4B00A4ED42 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		188FC5F4286FF03E00009B7E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				188FC5F5286FF07000009B7E /* OnBoardingPage.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		18CF55B2286FEE01001CBECF /* Fonts */ = {
@@ -160,6 +171,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				182742F8286FEB4900A4ED42 /* ContentView.swift in Sources */,
+				188FC5F6286FF07000009B7E /* OnBoardingPage.swift in Sources */,
 				182742F6286FEB4900A4ED42 /* omega_eCommerceApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
