@@ -9,7 +9,13 @@ import SwiftUI
 
 struct OnBoardingPage: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack{
+            
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(
+            Color("Purple")
+        )
     }
 }
 
