@@ -5,5 +5,10 @@
 	<key>ATSApplicationFontsPath</key>
 	<string></string>
 	<key>UIAppFonts</key>
+	<array>
+		<string>Raleway-Bold.ttf</string>
+		<string>Raleway-Regular.ttf</string>
+		<string>Raleway-SemiBold.ttf</string>
+	</array>
 </dict>
 </plist>
