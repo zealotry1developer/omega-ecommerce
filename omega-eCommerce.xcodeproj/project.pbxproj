@@ -25,6 +25,7 @@
 		188FC5EC286FEEE700009B7E /* Raleway-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-SemiBold.ttf"; sourceTree = "<group>"; };
 		188FC5ED286FEEE700009B7E /* Raleway-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Regular.ttf"; sourceTree = "<group>"; };
 		188FC5EE286FEEE700009B7E /* Raleway-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Bold.ttf"; sourceTree = "<group>"; };
+		188FC5F3286FEF9100009B7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +58,7 @@
 		182742F4286FEB4900A4ED42 /* omega-eCommerce */ = {
 			isa = PBXGroup;
 			children = (
+				188FC5F3286FEF9100009B7E /* Info.plist */,
 				18CF55B2286FEE01001CBECF /* Fonts */,
 				182742F5286FEB4900A4ED42 /* omega_eCommerceApp.swift */,
 				182742F7286FEB4900A4ED42 /* ContentView.swift */,
@@ -290,6 +292,7 @@
 				DEVELOPMENT_TEAM = 8W3DAXSQW9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "omega-eCommerce/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -319,6 +322,7 @@
 				DEVELOPMENT_TEAM = 8W3DAXSQW9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "omega-eCommerce/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
