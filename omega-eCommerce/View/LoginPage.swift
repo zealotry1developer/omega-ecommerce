@@ -101,7 +101,9 @@ struct LoginPage: View {
             .foregroundColor(Color.black.opacity(0.8))
             
             TextField(hint, text: value)
+                .padding(.top, 2)
             Divider()
+                .background(Color.black.opacity(0.4))
         }
     }
 }
