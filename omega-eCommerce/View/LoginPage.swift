@@ -113,6 +113,25 @@ struct LoginPage: View {
             Divider()
                 .background(Color.black.opacity(0.4))
         }
+        // ShowPassword button
+        .overlay(
+            Group {
+                if (title.contains("Password")) {
+                    Button (
+                        action: {
+                            showPassword.wrappedValue.toggle()
+                        },
+                        label: {
+                            Text(showPassword.wrappedValue ? "Hide" : "Show")
+                                .font(.custom(customFont, size: 14).bold())
+                                .foregroundColor(Color("Purple"))
+                        }
+                    )
+                    .offset(y: 9)
+                }
+            },
+            alignment: .trailing
+        )
     }
 }
 
