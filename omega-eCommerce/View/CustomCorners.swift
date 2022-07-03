@@ -19,4 +19,3 @@ struct CustomCorners: Shape {
     }
     
 }
-

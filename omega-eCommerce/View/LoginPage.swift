@@ -8,8 +8,35 @@
 import SwiftUI
 
 struct LoginPage: View {
+    @StateObject var loginData: LoginPageModel = LoginPageModel()
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        
+        VStack {
+            // Welcome back text
+            Text("Welcome\nback")
+                .font(
+                    .custom(customFont, size: 55)
+                    .bold()
+                )
+                .foregroundColor(Color.white)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .frame(height: getRect().height / 3.5)
+                .padding()
+            
+            ScrollView(.vertical, showsIndicators: false) {
+                
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(
+                Color.white
+                    .clipShape(CustomCorners(corners: [.topLeft, .topRight], radius: 25))
+                    .ignoresSafeArea()
+            )
+            
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color("Purple"))
     }
 }
 
