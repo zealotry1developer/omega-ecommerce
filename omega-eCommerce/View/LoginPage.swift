@@ -118,6 +118,28 @@ struct LoginPage: View {
                     }
                     .padding(.top, 8)
                     .frame(maxWidth: .infinity, alignment: .leading)
+                    
+                    // Login Button
+                    Button {
+                        if (loginData.registerUser) {
+                            loginData.register()
+                        } else {
+                            loginData.login()
+                        }
+                    } label: {
+                        Text("Login")
+                            .font(.custom(customFont, size: 20).bold())
+                            .padding(.vertical, 20)
+                            .foregroundColor(.white)
+                            .frame(maxWidth: .infinity)
+                            .background(Color("Purple"))
+                            .cornerRadius(15)
+                            .shadow(color: Color.black.opacity(0.07), radius: 5, x: 5, y: 5)
+                            
+                    }
+                    .padding(.top, 25)
+                    .padding(.horizontal)
+                    
                 }
                 .padding(30)
             }
