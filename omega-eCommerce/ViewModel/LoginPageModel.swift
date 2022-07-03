@@ -7,14 +7,26 @@
 
 import SwiftUI
 
-struct LoginPageModel: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+class LoginPageModel: ObservableObject {
+    // Login props
+    @Published var email: String = "" // @Published is a type that publishes a property marked with an attribute
+    @Published var password: String = ""
+    @Published var showPassword: String = ""
+    
+    // Register props
+    @Published var confirmedPassword: String = ""
+    @Published var showConfirmedPassword: String = ""
+    
+    
+    func login() {
+        // Login
     }
-}
-
-struct LoginPageModel_Previews: PreviewProvider {
-    static var previews: some View {
-        LoginPageModel()
+    
+    func register() {
+        // Login
+    }
+    
+    func forgotPassword() {
+        // Login
     }
 }
