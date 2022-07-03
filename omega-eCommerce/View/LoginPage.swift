@@ -14,14 +14,14 @@ struct LoginPage: View {
         
         VStack {
             // Welcome back text
-            Text("Welcome\nback")
+            Text("Welcome to\nOmega")
                 .font(
                     .custom(customFont, size: 55)
                     .bold()
                 )
                 .foregroundColor(Color.white)
                 .frame(maxWidth: .infinity, alignment: .leading)
-                .frame(height: getRect().height / 3.5)
+                .frame(height: getRect().height / 4.5)
                 .padding()
                 .background(
                     ZStack {

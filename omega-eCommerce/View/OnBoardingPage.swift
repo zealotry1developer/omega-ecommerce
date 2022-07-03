@@ -34,7 +34,7 @@ struct OnBoardingPage: View {
                     showLoginPage = true
                 }
             } label: {
-                Text("Get Started")
+                Text("Get Started with Omega")
                     .font(.custom(customFont, size: 18))
                     .fontWeight(.bold)
                     .padding(.vertical, 18)
@@ -54,9 +54,7 @@ struct OnBoardingPage: View {
         .padding()
         .padding(.top, getRect().height < 750 ? 0 : 20)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(
-            Color("Purple")
-        )
+        .background(Color("Purple"))
         .overlay(
             Group {
                 if (showLoginPage) {
