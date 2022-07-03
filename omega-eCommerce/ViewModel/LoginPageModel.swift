@@ -14,6 +14,7 @@ class LoginPageModel: ObservableObject {
     @Published var showPassword: Bool = false
     
     // Register props
+    @Published var registerUser: Bool = false
     @Published var confirmedPassword: String = ""
     @Published var showConfirmedPassword: String = ""
     
