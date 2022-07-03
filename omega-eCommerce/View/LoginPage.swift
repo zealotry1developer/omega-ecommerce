@@ -69,6 +69,46 @@ struct LoginPage: View {
             
             ScrollView(.vertical, showsIndicators: false) {
                 
+                VStack (spacing: 15) {
+                    Text("Login")
+                        .font(.custom(customFont, size: 22).bold())
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+                    
+                    // Custom Text Fields
+                    // Email
+                    CustomTextField(
+                        icon: "envelope",
+                        title: "Email",
+                        hint: "Email ID",
+                        value: $loginData.email,
+                        showPassword: .constant(false)
+                    )
+                    .padding(.top, 30)
+                    
+                    // Email
+                    CustomTextField(
+                        icon: "lock",
+                        title: "Password",
+                        hint: "Password",
+                        value: $loginData.password,
+                        showPassword: $loginData.showPassword
+                    )
+                    .padding(.top, 10)
+                    
+                    // Show confirm password field only if user is registering
+                    if (loginData.registerUser) {
+                        CustomTextField(
+                            icon: "lock",
+                            title: "Confirm Password",
+                            hint: "Confirm Password",
+                            value: $loginData.confirmedPassword,
+                            showPassword: $loginData.showConfirmedPassword
+                        )
+                        .padding(.top, 10)
+                    }
+                    
+                }
+                .padding(30)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(
