@@ -100,9 +100,7 @@ struct LoginPage: View {
             }
             .foregroundColor(Color.black.opacity(0.8))
             
-            TextField(hint, text: value)
-                .padding(.top, 2)
-            if (title.contains("Password")) {
+            if (title.contains("Password") && !showPassword.wrappedValue) {
                 SecureField(hint, text: value)
                     .padding(.top, 2)
             } else {
