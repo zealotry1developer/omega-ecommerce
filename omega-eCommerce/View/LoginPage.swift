@@ -168,6 +168,16 @@ struct LoginPage: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color("Purple"))
+        // Clearing data when changes
+        .onChange(of: loginData.registerUser) {newValue in
+            loginData.email = ""
+            loginData.password = ""
+            loginData.confirmedPassword = ""
+            loginData.showPassword = false
+            loginData.showConfirmedPassword = false
+            
+            
+        }
     }
     
     @ViewBuilder // helps create child views
