@@ -23,6 +23,49 @@ struct LoginPage: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .frame(height: getRect().height / 3.5)
                 .padding()
+                .background(
+                    ZStack {
+                        
+                        // gradient circle
+                        LinearGradient(
+                            colors: [
+                                Color("LoginCircle"),
+                                Color("LoginCircle").opacity(0.8),
+                                Color("Purple")
+                            ],
+                            startPoint: .top,
+                            endPoint: .bottom
+                        )
+                        .frame(width: 100, height: 100)
+                        .clipShape(Circle())
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
+                        .padding(.trailing)
+                        .offset(y: -25)
+                        .ignoresSafeArea()
+                        
+                        // small circles
+                        Circle()
+                            .strokeBorder(
+                                Color.white.opacity(0.3),
+                                lineWidth: 3
+                            )
+                            .frame(width: 30, height: 30)
+                            .blur(radius: 2)
+                            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
+                            .padding(30)
+                        
+                        Circle()
+                            .strokeBorder(
+                                Color.white.opacity(0.3),
+                                lineWidth: 3
+                            )
+                            .frame(width: 23, height: 23)
+                            .blur(radius: 2)
+                            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+                            .padding(.leading, 30)
+                        
+                    }
+                )
             
             ScrollView(.vertical, showsIndicators: false) {
                 
