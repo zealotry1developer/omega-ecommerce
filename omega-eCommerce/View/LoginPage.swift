@@ -70,7 +70,7 @@ struct LoginPage: View {
             ScrollView(.vertical, showsIndicators: false) {
                 // Login forms
                 VStack (spacing: 15) {
-                    Text("Login")
+                    Text(loginData.registerUser ? "Register" : "Login")
                         .font(.custom(customFont, size: 22).bold())
                         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
                     
@@ -139,6 +139,21 @@ struct LoginPage: View {
                     }
                     .padding(.top, 25)
                     .padding(.horizontal)
+                    
+                    // Register User button
+                    Button {
+                        withAnimation {
+                            loginData.registerUser.toggle()
+                        }
+                    } label: {
+                        Text(loginData.registerUser ? "Back to login" : "Not on Omega yet? Sign up")
+                            .font(.custom(customFont, size: 16))
+                            .fontWeight(.semibold)
+                            .foregroundColor(Color("Purple"))
+                    }
+                    .padding(.top, 8)
+                    .frame(maxWidth: .infinity)
+                    
                     
                 }
                 .padding(30)
