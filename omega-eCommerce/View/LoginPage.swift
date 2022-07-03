@@ -68,7 +68,7 @@ struct LoginPage: View {
                 )
             
             ScrollView(.vertical, showsIndicators: false) {
-                
+                // Login forms
                 VStack (spacing: 15) {
                     Text("Login")
                         .font(.custom(customFont, size: 22).bold())
@@ -107,6 +107,17 @@ struct LoginPage: View {
                         .padding(.top, 10)
                     }
                     
+                    // Forgot Password button
+                    Button {
+                        loginData.forgotPassword()
+                    } label: {
+                        Text("Forgot password?")
+                            .font(.custom(customFont, size: 16))
+                            .fontWeight(.semibold)
+                            .foregroundColor(Color("Purple"))
+                    }
+                    .padding(.top, 8)
+                    .frame(maxWidth: .infinity, alignment: .leading)
                 }
                 .padding(30)
             }
