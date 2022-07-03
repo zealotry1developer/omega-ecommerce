@@ -11,7 +11,7 @@ class LoginPageModel: ObservableObject {
     // Login props
     @Published var email: String = "" // @Published is a type that publishes a property marked with an attribute
     @Published var password: String = ""
-    @Published var showPassword: String = ""
+    @Published var showPassword: Bool = false
     
     // Register props
     @Published var confirmedPassword: String = ""
