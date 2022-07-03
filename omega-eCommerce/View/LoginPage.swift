@@ -102,6 +102,14 @@ struct LoginPage: View {
             
             TextField(hint, text: value)
                 .padding(.top, 2)
+            if (title.contains("Password")) {
+                SecureField(hint, text: value)
+                    .padding(.top, 2)
+            } else {
+                TextField(hint, text: value)
+                    .padding(.top, 2)
+            }
+            
             Divider()
                 .background(Color.black.opacity(0.4))
         }
