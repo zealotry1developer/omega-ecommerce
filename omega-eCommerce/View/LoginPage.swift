@@ -81,6 +81,29 @@ struct LoginPage: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color("Purple"))
     }
+    
+    @ViewBuilder // helps create child views
+    func CustomTextField(
+        icon: String,
+        title: String,
+        hint: String,
+        value: Binding<String>,
+        showPassword: Binding<Bool>
+    ) -> some View {
+        
+        VStack (alignment: .leading, spacing: 12) {
+            Label {
+                Text(title)
+                    .font(.custom(customFont, size: 14))
+            } icon: {
+                Image(systemName: icon)
+            }
+            .foregroundColor(Color.black.opacity(0.8))
+            
+            TextField(hint, text: value)
+            Divider()
+        }
+    }
 }
 
 struct LoginPage_Previews: PreviewProvider {
