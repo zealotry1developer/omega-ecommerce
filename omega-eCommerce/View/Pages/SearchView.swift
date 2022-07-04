@@ -77,20 +77,21 @@ struct SearchView: View {
                     }
                     .padding()
                     
-                } else {
+                } else { // there are results
+                    
                     // Filter Results
                     ScrollView(.vertical, showsIndicators: false) {
                         
                         VStack(spacing: 0) {
                             
                             // Found text
-                            Text("Found \(homeData.products.count) results")
+                            Text("Found \(products.count) results")
                                 .font(.custom(customFont, size: 20).bold())
                                 .padding(.bottom, 40)
 
                             
                             // Staggered Grid pattern
-                            StaggeredGrid(columns: 2, spacing: 80, list: homeData.products) { product in
+                            StaggeredGrid(columns: 2, spacing: 80, list: products) { product in
                                 
                                 // Card View
                                 ProductCardView(product: product)
