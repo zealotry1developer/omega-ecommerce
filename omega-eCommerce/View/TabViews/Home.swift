@@ -53,6 +53,22 @@ struct Home: View {
                     .padding(.horizontal, 25)
                 }
                 .padding(.top, 28)
+                
+                // Products Page
+                ScrollView(.horizontal, showsIndicators: false) {
+                    
+                    HStack(spacing: 25) {
+                        
+                        ForEach(homeData.filteredProducts) { product in
+                            // Product Card View
+                            ProductCardView(product: product)
+                        }
+                    }
+                    .padding(.horizontal, 25)
+                    .padding(.bottom)
+                    .padding(.top, 80)
+                }
+                .padding(.top, 30)
             }
             .padding()
         }
