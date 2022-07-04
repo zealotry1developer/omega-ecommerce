@@ -21,7 +21,7 @@ struct Profile: View {
                         .font(.custom(customFont, size: 28).bold())
                         .frame(maxWidth: .infinity, alignment: .leading)
                     
-                    // Profile
+                    // Profile Info
                     VStack(spacing: 15) {
                         
                         // Profile picture
@@ -53,6 +53,40 @@ struct Profile: View {
                     .padding()
                     .padding(.top, 40)
                     
+                    // Custome Navigation Links
+                    CustomNavigationLink(title: "Edit Profile") {
+                        Text("")
+                            .navigationTitle("Edit Profile")
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+                            .background(Color("HomeBG").ignoresSafeArea())
+                    }
+                    
+                    CustomNavigationLink(title: "Shopping Address") {
+                        Text("")
+                            .navigationTitle("Shopping Address")
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+                            .background(Color("HomeBG").ignoresSafeArea())
+                    }
+                    
+                    CustomNavigationLink(title: "Order history") {
+                        Text("")
+                            .navigationTitle("Order history")
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+                            .background(Color("HomeBG").ignoresSafeArea())
+                    }
+                    CustomNavigationLink(title: "Cards") {
+                        Text("")
+                            .navigationTitle("Cards")
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+                            .background(Color("HomeBG").ignoresSafeArea())
+                    }
+                    
+                    CustomNavigationLink(title: "Notification") {
+                        Text("")
+                            .navigationTitle("Notification")
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+                            .background(Color("HomeBG").ignoresSafeArea())
+                    }
                 }
                 .padding(.horizontal, 22)
                 .padding(.vertical, 20)
@@ -63,6 +97,36 @@ struct Profile: View {
                 Color.gray.opacity(0.4)
                     .ignoresSafeArea()
             )
+        }
+    }
+    // Avoiding new Structs...
+    @ViewBuilder
+    func CustomNavigationLink<Detail: View>(title: String,@ViewBuilder content: @escaping ()->Detail)->some View{
+        
+        
+        NavigationLink {
+            content()
+        } label: {
+            
+            HStack{
+                
+                Text(title)
+                    .font(.custom(customFont, size: 17))
+                    .fontWeight(.semibold)
+                
+                Spacer()
+                
+                Image(systemName: "chevron.right")
+            }
+            .foregroundColor(.black)
+            .padding()
+            .background(
+            
+                Color.white
+                    .cornerRadius(12)
+            )
+            .padding(.horizontal)
+            .padding(.top,10)
         }
     }
 }
