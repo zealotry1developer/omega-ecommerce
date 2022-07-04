@@ -63,6 +63,38 @@ struct SearchView: View {
             }
         }
     }
+    
+    @ViewBuilder
+    func ProductCardView(product: Product) -> some View {
+        VStack(spacing: 10) {
+            Image(product.productImage)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .offset(y: -50)
+                .padding(.bottom, -50)
+            
+            Text(product.title)
+                .font(.custom(customFont, size: 18))
+                .fontWeight(.semibold)
+                .padding(.top)
+
+            Text(product.subtitle)
+                .font(.custom(customFont, size: 14))
+                .foregroundColor(Color.gray)
+
+            Text(product.price)
+                .font(.custom(customFont, size: 16))
+                .fontWeight(.semibold)
+                .foregroundColor(Color("Purple"))
+                .padding(.top)
+        }
+        .padding(.horizontal, 20)
+        .padding(.bottom, 22)
+        .background(
+            Color.white
+                .cornerRadius(25)
+        )
+    }
 }
 
 struct SearchView_Previews: PreviewProvider {
