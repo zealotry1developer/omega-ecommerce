@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct MainPage: View {
+    @State var currentTab: Tab = .Home
+    init() {
+        UITabBar.appearance().isHidden = true
+    }
     var body: some View {
         Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
     }
@@ -20,7 +24,7 @@ struct MainPage_Previews: PreviewProvider {
 }
 
 // Tab cases
-enum Tab: String {
+enum Tab: String, CaseIterable {
     case Home = "Home"
     case Liked = "Liked"
     case Profile = "Profile"
