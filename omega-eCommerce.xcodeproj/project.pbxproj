@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		18043A19287369BE008BE182 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18043A18287369BE008BE182 /* SearchView.swift */; };
 		18043A1B2873767F008BE182 /* StaggeredGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18043A1A2873767F008BE182 /* StaggeredGrid.swift */; };
+		18043A1D28738F8E008BE182 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18043A1C28738F8E008BE182 /* Profile.swift */; };
 		182742F6286FEB4900A4ED42 /* omega_eCommerceApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182742F5286FEB4900A4ED42 /* omega_eCommerceApp.swift */; };
 		182742F8286FEB4900A4ED42 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182742F7286FEB4900A4ED42 /* ContentView.swift */; };
 		182742FA286FEB4B00A4ED42 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 182742F9286FEB4B00A4ED42 /* Assets.xcassets */; };
@@ -30,6 +31,7 @@
 /* Begin PBXFileReference section */
 		18043A18287369BE008BE182 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		18043A1A2873767F008BE182 /* StaggeredGrid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaggeredGrid.swift; sourceTree = "<group>"; };
+		18043A1C28738F8E008BE182 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		182742F2286FEB4900A4ED42 /* omega-eCommerce.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "omega-eCommerce.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		182742F5286FEB4900A4ED42 /* omega_eCommerceApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = omega_eCommerceApp.swift; sourceTree = "<group>"; };
 		182742F7286FEB4900A4ED42 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				18A72A0B2872739600CDEB61 /* Home.swift */,
+				18043A1C28738F8E008BE182 /* Profile.swift */,
 			);
 			path = TabViews;
 			sourceTree = "<group>";
@@ -251,6 +254,7 @@
 				188FC5F8287171E900009B7E /* LoginView.swift in Sources */,
 				188FC5FD2871758200009B7E /* CustomCorners.swift in Sources */,
 				188FC5FB2871720700009B7E /* LoginPageModel.swift in Sources */,
+				18043A1D28738F8E008BE182 /* Profile.swift in Sources */,
 				18043A1B2873767F008BE182 /* StaggeredGrid.swift in Sources */,
 				18A376302872BEB900A3806A /* HomeViewModel.swift in Sources */,
 				18043A19287369BE008BE182 /* SearchView.swift in Sources */,
