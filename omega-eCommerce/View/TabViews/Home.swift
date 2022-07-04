@@ -9,7 +9,30 @@ import SwiftUI
 
 struct Home: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        
+        ScrollView(.vertical, showsIndicators: false) {
+            
+            VStack (spacing: 15) {
+                
+                // Search bar
+                HStack(spacing: 15) {
+                    Image(systemName: "magnifyingglass")
+                        .font(.title2)
+                        .foregroundColor(.gray)
+                    TextField("Search...", text: .constant(""))
+                        .disabled(true)
+                }
+                .padding(.vertical, 12)
+                .padding(.horizontal)
+                .background(
+                    Capsule()
+                        .strokeBorder(Color.gray, lineWidth: 0.8)
+                )
+                
+            }
+            .padding()
+            
+        }
     }
 }
 
