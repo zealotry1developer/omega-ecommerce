@@ -14,10 +14,11 @@
 		188FC5EF286FEEE700009B7E /* Raleway-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 188FC5EC286FEEE700009B7E /* Raleway-SemiBold.ttf */; };
 		188FC5F0286FEEE700009B7E /* Raleway-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 188FC5ED286FEEE700009B7E /* Raleway-Regular.ttf */; };
 		188FC5F1286FEEE700009B7E /* Raleway-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 188FC5EE286FEEE700009B7E /* Raleway-Bold.ttf */; };
-		188FC5F6286FF07000009B7E /* OnBoardingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188FC5F5286FF07000009B7E /* OnBoardingPage.swift */; };
-		188FC5F8287171E900009B7E /* LoginPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188FC5F7287171E900009B7E /* LoginPage.swift */; };
+		188FC5F6286FF07000009B7E /* OnBoarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188FC5F5286FF07000009B7E /* OnBoarding.swift */; };
+		188FC5F8287171E900009B7E /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188FC5F7287171E900009B7E /* Login.swift */; };
 		188FC5FB2871720700009B7E /* LoginPageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188FC5FA2871720700009B7E /* LoginPageModel.swift */; };
 		188FC5FD2871758200009B7E /* CustomCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188FC5FC2871758200009B7E /* CustomCorners.swift */; };
+		18A72A0928726B9300CDEB61 /* MainPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A72A0828726B9300CDEB61 /* MainPage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,10 +31,11 @@
 		188FC5ED286FEEE700009B7E /* Raleway-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Regular.ttf"; sourceTree = "<group>"; };
 		188FC5EE286FEEE700009B7E /* Raleway-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Bold.ttf"; sourceTree = "<group>"; };
 		188FC5F3286FEF9100009B7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		188FC5F5286FF07000009B7E /* OnBoardingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingPage.swift; sourceTree = "<group>"; };
-		188FC5F7287171E900009B7E /* LoginPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPage.swift; sourceTree = "<group>"; };
+		188FC5F5286FF07000009B7E /* OnBoarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoarding.swift; sourceTree = "<group>"; };
+		188FC5F7287171E900009B7E /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		188FC5FA2871720700009B7E /* LoginPageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPageModel.swift; sourceTree = "<group>"; };
 		188FC5FC2871758200009B7E /* CustomCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCorners.swift; sourceTree = "<group>"; };
+		18A72A0828726B9300CDEB61 /* MainPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 		182742F4286FEB4900A4ED42 /* omega-eCommerce */ = {
 			isa = PBXGroup;
 			children = (
+				18A72A0428725C4900CDEB61 /* Utils */,
 				188FC5F9287171F800009B7E /* ViewModel */,
 				188FC5F4286FF03E00009B7E /* View */,
 				188FC5F3286FEF9100009B7E /* Info.plist */,
@@ -89,9 +92,9 @@
 		188FC5F4286FF03E00009B7E /* View */ = {
 			isa = PBXGroup;
 			children = (
-				188FC5F5286FF07000009B7E /* OnBoardingPage.swift */,
-				188FC5F7287171E900009B7E /* LoginPage.swift */,
-				188FC5FC2871758200009B7E /* CustomCorners.swift */,
+				188FC5F5286FF07000009B7E /* OnBoarding.swift */,
+				188FC5F7287171E900009B7E /* Login.swift */,
+				18A72A0828726B9300CDEB61 /* MainPage.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -102,6 +105,14 @@
 				188FC5FA2871720700009B7E /* LoginPageModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		18A72A0428725C4900CDEB61 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				188FC5FC2871758200009B7E /* CustomCorners.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		18CF55B2286FEE01001CBECF /* Fonts */ = {
@@ -187,11 +198,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				188FC5F8287171E900009B7E /* LoginPage.swift in Sources */,
+				188FC5F8287171E900009B7E /* Login.swift in Sources */,
 				188FC5FD2871758200009B7E /* CustomCorners.swift in Sources */,
 				188FC5FB2871720700009B7E /* LoginPageModel.swift in Sources */,
 				182742F8286FEB4900A4ED42 /* ContentView.swift in Sources */,
-				188FC5F6286FF07000009B7E /* OnBoardingPage.swift in Sources */,
+				188FC5F6286FF07000009B7E /* OnBoarding.swift in Sources */,
+				18A72A0928726B9300CDEB61 /* MainPage.swift in Sources */,
 				182742F6286FEB4900A4ED42 /* omega_eCommerceApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
