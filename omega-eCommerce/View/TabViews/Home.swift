@@ -31,7 +31,7 @@ struct Home: View {
                 .frame(width: getRect().width / 1.6)
                 .padding(.horizontal, 25)
                 
-                // Greet text
+                // Greeting text
                 Text("Order online \ncollect in store")
                     .font(.custom(customFont, size: 28).bold())
                     .frame(maxWidth: .infinity, alignment: .leading)
