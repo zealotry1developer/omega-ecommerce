@@ -175,8 +175,6 @@ struct LoginPage: View {
             loginData.confirmedPassword = ""
             loginData.showPassword = false
             loginData.showConfirmedPassword = false
-            
-            
         }
     }
     

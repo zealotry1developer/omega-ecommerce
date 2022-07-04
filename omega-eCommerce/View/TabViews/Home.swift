@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct Home: View {
+    
+    @Namespace var animation
+    @StateObject var homeData: HomeViewModel = HomeViewModel()
+    
     var body: some View {
         
         ScrollView(.vertical, showsIndicators: false) {
@@ -37,6 +41,18 @@ struct Home: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.top)
                     .padding(.horizontal, 25)
+                
+                // Product Tab
+                ScrollView(.horizontal, showsIndicators: false) {
+                    
+                    HStack(spacing: 18) {
+                        ForEach(ProductType.allCases, id: \.self) { type in
+                            ProductTypeView(type: type)
+                        }
+                    }
+                    .padding(.horizontal, 25)
+                }
+                .padding(.top, 28)
             }
             .padding()
         }
