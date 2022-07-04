@@ -37,6 +37,7 @@ class HomeViewModel: ObservableObject {
     // Search Data
     @Published var searchText: String = ""
     @Published var searchActivated: Bool = false
+    @Published var searchedProducts: [Product]?
     
     
     init() {
@@ -72,11 +73,36 @@ class HomeViewModel: ObservableObject {
              */
             DispatchQueue.main.async {
                 self.filteredProducts = results.compactMap({ product in
+                    /**
+                     The compactMap() method lets us transform the elements of an array just like map() does,
+                     except once the transformation completes an extra step happens: all optionals get unwrapped,
+                     and any nil values get discarded.
+                     */
                     return product
                 })
             }
         }
         
     }
+    
+    func filterProductBySearch() {
+        
+        // filter by product search text
+        DispatchQueue.global(qos: .userInteractive).async {
+            let results = self.products
+                .lazy // since this will require more memory so "lazy" is used to perform more -- used for filter or map
+                .filter { product in
+                    return product.title.lowercased().contains(self.searchText.lowercased())
+                }
+        
+            DispatchQueue.main.async {
+                self.filteredProducts = results.compactMap({ product in
+                    return product
+                })
+            }
+        }
+        
+    }
+    
     
 }
