@@ -22,7 +22,7 @@ struct MainPage: View {
         VStack(spacing: 0) {
             // Tab Views
             TabView(selection: $currentTab) {
-                Text("Home")
+                Home()
                     .tag(Tab.Home)
                 
                 Text("Liked")

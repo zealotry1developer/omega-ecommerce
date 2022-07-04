@@ -19,6 +19,7 @@
 		188FC5FB2871720700009B7E /* LoginPageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188FC5FA2871720700009B7E /* LoginPageModel.swift */; };
 		188FC5FD2871758200009B7E /* CustomCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188FC5FC2871758200009B7E /* CustomCorners.swift */; };
 		18A72A0928726B9300CDEB61 /* MainPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A72A0828726B9300CDEB61 /* MainPage.swift */; };
+		18A72A0C2872739600CDEB61 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A72A0B2872739600CDEB61 /* Home.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		188FC5FA2871720700009B7E /* LoginPageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPageModel.swift; sourceTree = "<group>"; };
 		188FC5FC2871758200009B7E /* CustomCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCorners.swift; sourceTree = "<group>"; };
 		18A72A0828726B9300CDEB61 /* MainPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPage.swift; sourceTree = "<group>"; };
+		18A72A0B2872739600CDEB61 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +94,7 @@
 		188FC5F4286FF03E00009B7E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				18A72A0A2872738D00CDEB61 /* TabViews */,
 				188FC5F5286FF07000009B7E /* OnBoarding.swift */,
 				188FC5F7287171E900009B7E /* Login.swift */,
 				18A72A0828726B9300CDEB61 /* MainPage.swift */,
@@ -113,6 +116,14 @@
 				188FC5FC2871758200009B7E /* CustomCorners.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		18A72A0A2872738D00CDEB61 /* TabViews */ = {
+			isa = PBXGroup;
+			children = (
+				18A72A0B2872739600CDEB61 /* Home.swift */,
+			);
+			path = TabViews;
 			sourceTree = "<group>";
 		};
 		18CF55B2286FEE01001CBECF /* Fonts */ = {
@@ -204,6 +215,7 @@
 				182742F8286FEB4900A4ED42 /* ContentView.swift in Sources */,
 				188FC5F6286FF07000009B7E /* OnBoarding.swift in Sources */,
 				18A72A0928726B9300CDEB61 /* MainPage.swift in Sources */,
+				18A72A0C2872739600CDEB61 /* Home.swift in Sources */,
 				182742F6286FEB4900A4ED42 /* omega_eCommerceApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
