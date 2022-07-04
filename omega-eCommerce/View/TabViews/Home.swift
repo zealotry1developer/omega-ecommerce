@@ -19,21 +19,22 @@ struct Home: View {
             VStack (spacing: 15) {
                 
                 // Search bar
-                HStack(spacing: 15) {
-                    Image(systemName: "magnifyingglass")
-                        .font(.title2)
-                        .foregroundColor(.gray)
-                    TextField("Search...", text: .constant(""))
-                        .disabled(true)
+                ZStack {
+                    if (homeData.searchActivated) {
+                        SearchBar()
+                    } else {
+                        SearchBar()
+                            .matchedGeometryEffect(id: "SEARCHBAR", in: animation)
+                    }
                 }
-                .padding(.vertical, 12)
-                .padding(.horizontal)
-                .background(
-                    Capsule()
-                        .strokeBorder(Color.gray, lineWidth: 0.8)
-                )
                 .frame(width: getRect().width / 1.6)
                 .padding(.horizontal, 25)
+                .contentShape(Rectangle())
+                .onTapGesture {
+                    withAnimation(.easeInOut) {
+                        homeData.searchActivated = true
+                    }
+                }
                 
                 // Greeting text
                 Text("Order online \ncollect in store")
@@ -100,6 +101,31 @@ struct Home: View {
         .sheet(isPresented: $homeData.showMoreProductsOnType) {
             MoreProducts()
         }
+        .overlay ( // Displaying Search View
+            ZStack {
+                if (homeData.searchActivated) {
+                    SearchView(animation: animation)
+                        .environmentObject(homeData)
+                }
+            }
+        )
+    }
+    
+    @ViewBuilder
+    func SearchBar() -> some View {
+        HStack(spacing: 15) {
+            Image(systemName: "magnifyingglass")
+                .font(.title2)
+                .foregroundColor(.gray)
+            TextField("Search...", text: .constant(""))
+                .disabled(true)
+        }
+        .padding(.vertical, 12)
+        .padding(.horizontal)
+        .background(
+            Capsule()
+                .strokeBorder(Color.gray, lineWidth: 0.8)
+        )
     }
     
     @ViewBuilder
