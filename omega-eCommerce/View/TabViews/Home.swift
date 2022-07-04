@@ -72,7 +72,7 @@ struct Home: View {
                 
                 // See more button to show all the products
                 Button {
-                    
+                    homeData.showMoreProductsOnType.toggle()
                 } label: {
                     Label {
                         Image(systemName: "arrow.right")
@@ -93,6 +93,12 @@ struct Home: View {
         // Update data whenever tab changes
         .onChange(of: homeData.productType) { newValue in
             homeData.filterProductByType()
+        }
+        /**
+         SwiftUI's sheets are used to present new views over existing ones, while still allowing users to drag down to dismiss the new view when they are ready
+         */
+        .sheet(isPresented: $homeData.showMoreProductsOnType) {
+            MoreProducts()
         }
     }
     
