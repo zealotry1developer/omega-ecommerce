@@ -128,6 +128,40 @@ struct Home: View {
                 .cornerRadius(25)
         )
     }
+    
+    @ViewBuilder
+    func ProductTypeView(type: ProductType) -> some View {
+        Button {
+            withAnimation {
+                homeData.productType = type
+            }
+        } label: {
+            
+            Text(type.rawValue)
+                .font(.custom(customFont, size: 15))
+                .fontWeight(.semibold)
+                .foregroundColor(homeData.productType == type ? Color("Purple") : Color.gray)
+                .padding(.bottom, 10)
+                // adding indicator at bottom
+                .overlay(
+                    ZStack {
+                        if (homeData.productType == type) {
+                            Capsule()
+                                .fill(Color("Purple"))
+                                .matchedGeometryEffect(id: "PRODUCTTAB", in: animation)
+                                .frame(height: 2)
+                        } else {
+                            Capsule()
+                                .fill(Color.clear)
+                                .frame(height: 2)
+                        }
+                    }
+                        .padding(.horizontal, -5)
+                    , alignment: .bottom
+                )
+        }
+    }
+    
 }
 
 struct Home_Previews: PreviewProvider {
