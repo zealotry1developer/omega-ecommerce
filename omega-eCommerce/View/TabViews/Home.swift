@@ -69,6 +69,22 @@ struct Home: View {
                     .padding(.top, 80)
                 }
                 .padding(.top, 30)
+                
+                // See more button to show all the products
+                Button {
+                    
+                } label: {
+                    Label {
+                        Image(systemName: "arrow.right")
+                    } icon: {
+                        Text("see more")
+                    }
+                    .foregroundColor(Color("Purple"))
+                    .font(.custom(customFont, size: 15).bold())
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .trailing)
+                .padding(.trailing)
+                .padding(.top, 10)
             }
             .padding()
         }
