@@ -158,7 +158,7 @@ struct LoginPage: View {
                         
                         // Browse Omega as Guest
                         Button {
-                            withAnimation {
+                            withAnimation(.easeInOut) {
                                 showMainPage = true
                             }
                         } label: {
@@ -195,7 +195,7 @@ struct LoginPage: View {
         .overlay (
             Group {
                 if (showMainPage) {
-                    MainPage().transition(.move(edge: .leading))
+                    MainPage()
                 }
             }
         )
