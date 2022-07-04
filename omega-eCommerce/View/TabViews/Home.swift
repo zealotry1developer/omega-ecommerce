@@ -39,8 +39,11 @@ struct Home: View {
                     .padding(.horizontal, 25)
             }
             .padding()
-            
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(
+            Color("HomeBG")
+        )
     }
 }
 
