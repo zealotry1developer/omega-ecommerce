@@ -68,6 +68,7 @@ struct MainPage: View {
             .padding([.horizontal, .top])
             .padding(.bottom, 10)
         }
+        .background(Color("HomeBG").ignoresSafeArea())
     }
 }
 

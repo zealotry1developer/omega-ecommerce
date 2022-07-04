@@ -9,7 +9,7 @@ import SwiftUI
 
 struct LoginPage: View {
     @StateObject var loginData: LoginPageModel = LoginPageModel()
-    @State var showHomePage: Bool = false
+    @State var showMainPage: Bool = false
     
     var body: some View {
         
@@ -159,7 +159,7 @@ struct LoginPage: View {
                         // Browse Omega as Guest
                         Button {
                             withAnimation {
-                                showHomePage = true
+                                showMainPage = true
                             }
                         } label: {
                             Text("Browse Omega as guest")
@@ -194,8 +194,8 @@ struct LoginPage: View {
         }
         .overlay (
             Group {
-                if (showHomePage) {
-                    Home().transition(.move(edge: .leading))
+                if (showMainPage) {
+                    MainPage().transition(.move(edge: .leading))
                 }
             }
         )
