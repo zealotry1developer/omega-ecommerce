@@ -86,9 +86,16 @@ struct Home: View {
                 .padding(.trailing)
                 .padding(.top, 10)
             }
-            .padding()
+            .padding(.vertical)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color("HomeBG"))
+        // Update data whenever tab changes
+        .onChange(of: homeData.productType) { newValue in
+            homeData.filterProductByType()
+        }
+    }
+    
         .background(
             Color("HomeBG")
         )
