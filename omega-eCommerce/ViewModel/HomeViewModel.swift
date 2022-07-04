@@ -28,4 +28,48 @@ class HomeViewModel: ObservableObject {
         Product(type: .Laptops, title: "iMac", subtitle: "M1 - Purple", price: "$1599", productImage: "iMac"),
     ]
     
+    // Filtered products
+    
+    @Published var filteredProducts: [Product] = []
+    
+    init() {
+       filterProductByType()
+    }
+    
+    func filterProductByType() {
+        // filter by product type
+        
+        /**
+         DispatchQueue.global is executed in the background thread, not in the main thread
+         Background thread is used to for the non-UI tasks most of the time.
+         The tasks would consume time and need async/await, like calling API or filtering etc.
+         
+         DispatchQueue.global is managed by system, which can manage background thread by using qos (Quality of Service)
+         
+         // More about Main and Background thread at: https://towardsdev.com/ios-introducing-dispatchqueue-in-swift-e9c6fbf8be1d
+         */
+        
+        /**
+        UserInteractive is the highest priority QoS. System will give more resources for this setting, should be used for UI and animation related tasks
+         */
+        DispatchQueue.global(qos: .userInteractive).async {
+            let results = self.products
+                .lazy // since this will require more memory so "lazy" is used to perform more -- used for filter or map
+                .filter { product in
+                    return product.type == self.productType
+                }
+                .prefix(4) // limiting results to 4 products
+            
+            /**
+             DispatchQueue.main is the queue to manage the main thread to update UI
+             */
+            DispatchQueue.main.async {
+                self.filteredProducts = results.compactMap({ product in
+                    return product
+                })
+            }
+        }
+        
+    }
+    
 }
