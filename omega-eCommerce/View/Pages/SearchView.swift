@@ -19,7 +19,7 @@ struct SearchView: View {
     var body: some View {
         
         VStack(spacing: 0) {
-            // Search bar
+            // Search bar section
             HStack(spacing: 15) {
                 // Close Button
                 Button {
@@ -53,6 +53,60 @@ struct SearchView: View {
             }
             .padding([.horizontal])
             .padding(.top)
+            
+            // Show progress if searching
+            // else showing no results found if empty
+            if let products = homeData.searchedProducts {
+                if (products.isEmpty) {
+                    
+                    // No results found
+                    VStack(spacing: 10) {
+                        Image("NotFound")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .padding(.top, 60)
+                        
+                        Text("Item Not Found")
+                            .font(.custom(customFont, size: 22).bold())
+                        
+                        Text("Try a more generic search term or try looking for alternative products.")
+                            .font(.custom(customFont, size: 16).bold())
+                            .foregroundColor(.gray)
+                            .multilineTextAlignment(.center)
+                            .padding(.horizontal, 30)
+                    }
+                    .padding()
+                    
+                } else {
+                    // Filter Results
+                    ScrollView(.vertical, showsIndicators: false) {
+                        
+                        VStack(spacing: 0) {
+                            
+                            // Found text
+                            Text("Found \(homeData.products.count) results")
+                                .font(.custom(customFont, size: 20).bold())
+                                .padding(.bottom, 40)
+
+                            
+                            // Staggered Grid pattern
+                            StaggeredGrid(columns: 2, spacing: 80, list: homeData.products) { product in
+                                
+                                // Card View
+                                ProductCardView(product: product)
+                                
+                            }
+                        }
+                        .padding()
+                    }
+                }
+            } else {
+                ProgressView()
+                    .padding(.top, 30)
+                    .opacity(homeData.searchText == "" ? 0 : 1)
+            }
+            
+            
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         .background(Color("HomeBG").ignoresSafeArea())
