@@ -9,6 +9,7 @@ import SwiftUI
 
 struct LoginPage: View {
     @StateObject var loginData: LoginPageModel = LoginPageModel()
+    @State var showHomePage: Bool = false
     
     var body: some View {
         
@@ -140,19 +141,34 @@ struct LoginPage: View {
                     .padding(.top, 25)
                     .padding(.horizontal)
                     
-                    // Register User button
-                    Button {
-                        withAnimation {
-                            loginData.registerUser.toggle()
+                    VStack (spacing: 10) {
+                        // Register User button
+                        Button {
+                            withAnimation {
+                                loginData.registerUser.toggle()
+                            }
+                        } label: {
+                            Text(loginData.registerUser ? "Back to login" : "Not on Omega yet? Sign up")
+                                .font(.custom(customFont, size: 16))
+                                .fontWeight(.semibold)
+                                .foregroundColor(Color("Purple"))
                         }
-                    } label: {
-                        Text(loginData.registerUser ? "Back to login" : "Not on Omega yet? Sign up")
-                            .font(.custom(customFont, size: 16))
-                            .fontWeight(.semibold)
-                            .foregroundColor(Color("Purple"))
+                        .padding(.top, 8)
+                        .frame(maxWidth: .infinity)
+                        
+                        // Browse Omega as Guest
+                        Button {
+                            withAnimation {
+                                showHomePage = true
+                            }
+                        } label: {
+                            Text("Browse Omega as guest")
+                                .font(.custom(customFont, size: 15))
+                                .fontWeight(.semibold)
+                                .foregroundColor(Color("Purple").opacity(0.9))
+                        }
+                        .frame(maxWidth: .infinity)
                     }
-                    .padding(.top, 8)
-                    .frame(maxWidth: .infinity)
                     
                     
                 }
@@ -176,6 +192,13 @@ struct LoginPage: View {
             loginData.showPassword = false
             loginData.showConfirmedPassword = false
         }
+        .overlay (
+            Group {
+                if (showHomePage) {
+                    Home().transition(.move(edge: .leading))
+                }
+            }
+        )
     }
     
     @ViewBuilder // helps create child views
