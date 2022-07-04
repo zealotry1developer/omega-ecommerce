@@ -19,3 +19,10 @@ struct MainPage_Previews: PreviewProvider {
     }
 }
 
+// Tab cases
+enum Tab: String {
+    case Home = "Home"
+    case Liked = "Liked"
+    case Profile = "Profile"
+    case Cart = "Cart"
+}
