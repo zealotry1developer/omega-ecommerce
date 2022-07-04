@@ -28,6 +28,8 @@ struct Home: View {
                     Capsule()
                         .strokeBorder(Color.gray, lineWidth: 0.8)
                 )
+                .frame(width: getRect().width / 1.6)
+                .padding(.horizontal, 25)
                 
             }
             .padding()
