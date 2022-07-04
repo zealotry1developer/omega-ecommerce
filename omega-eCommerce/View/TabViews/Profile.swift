@@ -55,37 +55,22 @@ struct Profile: View {
                     
                     // Custome Navigation Links
                     CustomNavigationLink(title: "Edit Profile") {
-                        Text("")
-                            .navigationTitle("Edit Profile")
-                            .frame(maxWidth: .infinity, maxHeight: .infinity)
-                            .background(Color("HomeBG").ignoresSafeArea())
+                        NavView(title: "Edit Profile")
                     }
                     
                     CustomNavigationLink(title: "Shopping Address") {
-                        Text("")
-                            .navigationTitle("Shopping Address")
-                            .frame(maxWidth: .infinity, maxHeight: .infinity)
-                            .background(Color("HomeBG").ignoresSafeArea())
+                        NavView(title: "Shopping Address")
                     }
                     
                     CustomNavigationLink(title: "Order history") {
-                        Text("")
-                            .navigationTitle("Order history")
-                            .frame(maxWidth: .infinity, maxHeight: .infinity)
-                            .background(Color("HomeBG").ignoresSafeArea())
+                        NavView(title: "Order history")
                     }
                     CustomNavigationLink(title: "Cards") {
-                        Text("")
-                            .navigationTitle("Cards")
-                            .frame(maxWidth: .infinity, maxHeight: .infinity)
-                            .background(Color("HomeBG").ignoresSafeArea())
+                        NavView(title: "Cards")
                     }
                     
                     CustomNavigationLink(title: "Notification") {
-                        Text("")
-                            .navigationTitle("Notification")
-                            .frame(maxWidth: .infinity, maxHeight: .infinity)
-                            .background(Color("HomeBG").ignoresSafeArea())
+                        NavView(title: "Notification")
                     }
                 }
                 .padding(.horizontal, 22)
@@ -99,6 +84,15 @@ struct Profile: View {
             )
         }
     }
+    
+    @ViewBuilder
+    func NavView(title: String) -> some View {
+        Text("")
+            .navigationTitle(title)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(Color("HomeBG").ignoresSafeArea())
+    }
+    
     // Avoiding new Structs...
     @ViewBuilder
     func CustomNavigationLink<Detail: View>(title: String,@ViewBuilder content: @escaping ()->Detail)->some View{
