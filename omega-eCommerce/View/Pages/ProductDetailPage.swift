@@ -111,6 +111,22 @@ struct ProductDetailView: View {
                             .foregroundColor(Color("Purple"))
                     }
                     .padding(.vertical, 20)
+                    
+                    // Add button
+                    Button {
+                        
+                    } label: {
+                        Text("add to basket")
+                            .font(.custom(customFont, size: 20).bold())
+                            .foregroundColor(.white)
+                            .padding(.vertical, 20)
+                            .frame(maxWidth: .infinity)
+                            .background(
+                                Color("Purple")
+                                    .cornerRadius(15)
+                                    .shadow(color: Color.black.opacity(0.06), radius: 5, x: 5, y: 5)
+                            )
+                    }
                 }
                 .padding([.horizontal, .bottom], 20)
                 .padding(.top, 25)
