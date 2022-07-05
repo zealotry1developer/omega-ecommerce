@@ -12,6 +12,9 @@ struct Liked: View {
     @EnvironmentObject var homeData: HomeViewModel
     @EnvironmentObject var sharedData: SharedDataViewModel
     
+    // Delete option
+    @State var showDeleteOption: Bool = false
+    
     var body: some View {
         NavigationView {
             ScrollView(.vertical, showsIndicators: false) {
@@ -24,7 +27,9 @@ struct Liked: View {
                         Spacer()
                         
                         Button {
-                            
+                            withAnimation{
+                                showDeleteOption.toggle()
+                            }
                         } label: {
                             Image("Delete")
                                 .resizable()
@@ -58,6 +63,19 @@ struct Liked: View {
                         VStack(spacing: 15) {
                             ForEach(homeData.products) { product in
                                 HStack(spacing: 0) {
+                                    
+                                    // delete buttons
+                                    if (showDeleteOption) {
+                                        Button {
+                                            
+                                        } label: {
+                                            Image(systemName: "minus.circle.fill")
+                                                .font(.title2)
+                                                .foregroundColor(.red)
+                                        }
+                                        .padding(.trailing)
+                                    }
+                                    
                                     CardView(product: product)
                                 }
                             }
@@ -87,17 +105,21 @@ struct Liked: View {
             VStack(alignment: .leading, spacing: 8) {
                 Text(product.title)
                     .font(.custom(customFont, size: 18).bold())
+                    .lineLimit(1)
                      
                 Text(product.subtitle)
                     .font(.custom(customFont, size: 17))
                     .fontWeight(.semibold)
                     .foregroundColor(Color("Purple"))
+                    .lineLimit(1)
+                
                 Text("Type: \(product.type.rawValue)")
                     .font(.custom(customFont, size: 13))
                     .foregroundColor(.gray)
+                    .lineLimit(1)
             }
         }
-        .padding(.horizontal)
+        .padding(.horizontal, 10)
         .padding(.vertical, 10)
         .frame(maxWidth: .infinity, alignment: .leading)
         .background(
