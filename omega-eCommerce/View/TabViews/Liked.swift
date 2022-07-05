@@ -9,7 +9,6 @@ import SwiftUI
 
 struct Liked: View {
     // For Designing
-    @EnvironmentObject var homeData: HomeViewModel
     @EnvironmentObject var sharedData: SharedDataViewModel
     
     // Delete option
@@ -36,10 +35,11 @@ struct Liked: View {
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 25, height: 25)
                         }
+                        .opacity(sharedData.likedProducts.isEmpty ? 0 : 1)
                     }
                     
                     // Check if likedProducts array is empty
-                    if (!sharedData.likedProducts.isEmpty) {
+                    if (sharedData.likedProducts.isEmpty) {
                         Group {
                             Image("NoLiked")
                                 .resizable()
@@ -61,13 +61,13 @@ struct Liked: View {
                     } else {
                         // Display products
                         VStack(spacing: 15) {
-                            ForEach(homeData.products) { product in
+                            ForEach(sharedData.likedProducts) { product in
                                 HStack(spacing: 0) {
                                     
                                     // delete buttons
                                     if (showDeleteOption) {
                                         Button {
-                                            
+                                            deleteProduct(product: product)
                                         } label: {
                                             Image(systemName: "minus.circle.fill")
                                                 .font(.title2)
@@ -127,12 +127,23 @@ struct Liked: View {
         )
     }
     
+    func deleteProduct(product: Product) {
+        if let index = sharedData.likedProducts.firstIndex(where: { currentProduct in
+            return product.id == currentProduct.id
+        }) {
+            let _ = withAnimation {
+                // remove items
+                sharedData.likedProducts.remove(at: index)
+            }
+        }
+    }
+    
+    
 }
 
 struct Liked_Previews: PreviewProvider {
     static var previews: some View {
         Liked()
-            .environmentObject(HomeViewModel())
             .environmentObject(SharedDataViewModel())
     }
 }
