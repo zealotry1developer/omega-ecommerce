@@ -16,6 +16,8 @@ struct ProductDetailPage: View {
     // Shared Data Model
     @EnvironmentObject var sharedData: SharedDataViewModel
     
+    @EnvironmentObject var homeData: HomeViewModel
+    
     var body: some View {
         
         VStack {
@@ -42,7 +44,7 @@ struct ProductDetailPage: View {
                     Spacer()
                     
                     Button {
-                        
+                        addToLiked()
                     } label: {
                         Image("Liked")
                             .renderingMode(.template)
@@ -117,11 +119,11 @@ struct ProductDetailPage: View {
                     }
                     .padding(.vertical, 20)
                     
-                    // Add button
+                    // Add to cart button
                     Button {
-                        
+                        addToCart()
                     } label: {
-                        Text("add to basket")
+                        Text("add to cart")
                             .font(.custom(customFont, size: 20).bold())
                             .foregroundColor(.white)
                             .padding(.vertical, 20)
@@ -148,6 +150,34 @@ struct ProductDetailPage: View {
         }
         .background(Color("HomeBG").ignoresSafeArea())
     }
+    
+    func addToLiked() {
+        
+        /**
+         When user hits addToLiked button,
+         if the product is already in the sharedData.likeProducts array -> remove the product from the array
+         else (the product is not in the array yet) -> append the product to the array
+         */
+        if let index = sharedData.likedProducts.firstIndex(where: { product in
+            return self.product.id == product.id
+        }) {
+            sharedData.likedProducts.remove(at: index)
+        } else {
+            sharedData.likedProducts.append(product)
+        }
+    }
+    
+    func addToCart() {
+        
+        if let index = sharedData.cartProducts.firstIndex(where: { product in
+            return self.product.id == product.id
+        }) {
+            sharedData.cartProducts.remove(at: index)
+        } else {
+            sharedData.cartProducts.append(product)
+        }
+    }
+    
 }
 
 struct ProductDetailView_Previews: PreviewProvider {
