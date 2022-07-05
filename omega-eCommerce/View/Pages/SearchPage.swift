@@ -14,6 +14,9 @@ struct SearchView: View {
     // activate text fied with the help of focus state
     @FocusState var startTF: Bool
     
+    // Shared Data
+    @EnvironmentObject var sharedData: SharedDataViewModel
+    
     var animation: Namespace.ID
     
     var body: some View {
@@ -27,6 +30,7 @@ struct SearchView: View {
                         homeData.searchActivated = false
                     }
                     homeData.searchText = ""
+                    sharedData.fromSearchPage = false
                 } label: {
                     Image(systemName: "arrow.left")
                         .font(.title2)
@@ -123,12 +127,23 @@ struct SearchView: View {
     @ViewBuilder
     func ProductCardView(product: Product) -> some View {
         VStack(spacing: 10) {
-            Image(product.productImage)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .offset(y: -50)
-                .padding(.bottom, -50)
             
+            ZStack {
+                if (sharedData.showDetailProduct) {
+                    Image(product.productImage)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .opacity(0)
+                } else {
+                    Image(product.productImage)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .matchedGeometryEffect(id: "\(product.id)SEARCH", in: animation)
+                }
+            }
+            .offset(y: -50)
+            .padding(.bottom, -50)
+        
             Text(product.title)
                 .font(.custom(customFont, size: 18))
                 .fontWeight(.semibold)
@@ -150,6 +165,14 @@ struct SearchView: View {
             Color.white
                 .cornerRadius(25)
         )
+        .onTapGesture {
+            // Show Product detail when tapped
+            withAnimation(.easeInOut) {
+                sharedData.fromSearchPage = true
+                sharedData.detailProduct = product
+                sharedData.showDetailProduct = true
+            }
+        }
     }
 }
 
