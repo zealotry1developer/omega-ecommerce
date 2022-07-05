@@ -51,7 +51,9 @@ struct ProductDetailPage: View {
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 22, height: 22)
-                            .foregroundColor(Color.black.opacity(0.7))
+                            .foregroundColor(
+                                isLiked() ? .red : Color.black.opacity(0.7)
+                            )
                     }
                     
                 }
@@ -123,7 +125,7 @@ struct ProductDetailPage: View {
                     Button {
                         addToCart()
                     } label: {
-                        Text("add to cart")
+                        Text("\(isAddedToCart() ? "Added" : "Add") to cart")
                             .font(.custom(customFont, size: 20).bold())
                             .foregroundColor(.white)
                             .padding(.vertical, 20)
@@ -151,6 +153,18 @@ struct ProductDetailPage: View {
         .animation(.easeInOut, value: sharedData.likedProducts)
         .animation(.easeInOut, value: sharedData.cartProducts)
         .background(Color("HomeBG").ignoresSafeArea())
+    }
+    
+    func isLiked() -> Bool{
+        return sharedData.likedProducts.contains { product in
+            return self.product.id == product.id
+        }
+    }
+    
+    func isAddedToCart() -> Bool{
+        return sharedData.cartProducts.contains { product in
+            return self.product.id == product.id
+        }
     }
     
     func addToLiked() {
