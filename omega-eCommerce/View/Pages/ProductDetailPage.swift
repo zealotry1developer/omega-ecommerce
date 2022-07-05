@@ -148,6 +148,8 @@ struct ProductDetailPage: View {
             )
             .zIndex(0)
         }
+        .animation(.easeInOut, value: sharedData.likedProducts)
+        .animation(.easeInOut, value: sharedData.cartProducts)
         .background(Color("HomeBG").ignoresSafeArea())
     }
     
