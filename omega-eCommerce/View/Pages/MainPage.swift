@@ -12,6 +12,12 @@ struct MainPage: View {
     // Current tab
     @State var currentTab: Tab = .Home
     
+    // SharedDataModel
+    @StateObject var sharedData: SharedDataViewModel = SharedDataViewModel()
+    
+    // animation namespace -- @Namespace is the wrapper for Namespace.ID, use @Namespace in the parentView, then pass Namespace.ID to child views
+    @Namespace var animation
+    
     // Hiding tab bar
     init() {
         UITabBar.appearance().isHidden = true
@@ -22,7 +28,8 @@ struct MainPage: View {
         VStack(spacing: 0) {
             // Tab Views
             TabView(selection: $currentTab) {
-                Home()
+                Home(animation: animation)
+                    .environmentObject(sharedData)
                     .tag(Tab.Home)
                 
                 Text("Liked")
@@ -69,6 +76,16 @@ struct MainPage: View {
             .padding(.bottom, 10)
         }
         .background(Color("HomeBG").ignoresSafeArea())
+        .overlay(
+            ZStack {
+                // Detail Page
+                if let product = sharedData.detailProduct, sharedData.showDetailProduct {
+                     ProductDetailPage(product: product, animation: animation)
+                        .environmentObject(sharedData)
+                        .transition(.asymmetric(insertion: .move(edge: .trailing), removal: .opacity))
+                }
+            }
+        )
     }
 }
 

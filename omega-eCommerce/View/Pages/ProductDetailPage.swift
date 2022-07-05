@@ -7,8 +7,11 @@
 
 import SwiftUI
 
-struct ProductDetailView: View {
+struct ProductDetailPage: View {
     var product: Product
+    
+    // Fpr Matched Geometry Effect
+    var animation: Namespace.ID
     
     // Shared Data Model
     @EnvironmentObject var sharedData: SharedDataViewModel
@@ -27,7 +30,7 @@ struct ProductDetailView: View {
                     Button {
                         // Closing View
                         withAnimation(.easeInOut) {
-//                            sharedData.showDetailProduct == false
+                            sharedData.showDetailProduct = false
                         }
                         
                     } label: {
@@ -56,6 +59,7 @@ struct ProductDetailView: View {
                 Image(product.productImage)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
+                    .matchedGeometryEffect(id: "\(product.id)IMAGE", in: animation)
                     .padding(.horizontal)
                     .offset(y: -12)
                     .frame(maxHeight: .infinity)
@@ -63,6 +67,7 @@ struct ProductDetailView: View {
                 
             }
             .frame(height: getRect().height / 2.7)
+            .zIndex(1)
             
             // Product Details
             ScrollView(.vertical, showsIndicators: false) {
@@ -139,6 +144,7 @@ struct ProductDetailView: View {
                     .clipShape(CustomCorners(corners: [.topLeft, .topRight], radius: 25))
                     .ignoresSafeArea()
             )
+            .zIndex(0)
         }
         .background(Color("HomeBG").ignoresSafeArea())
     }
@@ -146,7 +152,9 @@ struct ProductDetailView: View {
 
 struct ProductDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        ProductDetailView(product: HomeViewModel().products[0])
-            .environmentObject(SharedDataViewModel())
+//        ProductDetailView(product: HomeViewModel().products[0])
+//            .environmentObject(SharedDataViewModel())
+        
+        MainPage()
     }
 }

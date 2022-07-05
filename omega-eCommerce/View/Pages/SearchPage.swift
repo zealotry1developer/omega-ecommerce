@@ -155,6 +155,6 @@ struct SearchView: View {
 
 struct SearchView_Previews: PreviewProvider {
     static var previews: some View {
-        Home()
+        MainPage()
     }
 }
