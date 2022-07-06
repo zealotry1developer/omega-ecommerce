@@ -15,7 +15,7 @@ struct MainPage: View {
     // SharedDataModel
     @StateObject var sharedData: SharedDataViewModel = SharedDataViewModel()
     
-    // animation namespace -- @Namespace is the wrapper for Namespace.ID, use @Namespace in the parentView, then pass Namespace.ID to child views
+    // @Namespace is the wrapper for Namespace.ID, use @Namespace in the parentView, then pass Namespace.ID to child views
     @Namespace var animation
     
     // Hiding tab bar
