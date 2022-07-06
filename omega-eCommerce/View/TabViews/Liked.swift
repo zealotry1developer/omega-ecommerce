@@ -15,81 +15,134 @@ struct Liked: View {
     @State var showDeleteOption: Bool = false
     
     var body: some View {
-        NavigationView {
-            ScrollView(.vertical, showsIndicators: false) {
-                VStack {
-                    // TabView Title
-                    HStack {
-                        Text("Favourites")
-                            .font(.custom(customFont, size: 28).bold())
-                        
-                        Spacer()
-                        
-                        Button {
-                            withAnimation{
-                                showDeleteOption.toggle()
-                            }
-                        } label: {
-                            Image("Delete")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 25, height: 25)
-                        }
-                        .opacity(sharedData.likedProducts.isEmpty ? 0 : 1)
-                    }
+        
+        NavigationView{
+            
+            VStack(spacing: 10){
+                
+                ScrollView(.vertical, showsIndicators: false) {
                     
-                    // Check if likedProducts array is empty
-                    if (sharedData.likedProducts.isEmpty) {
-                        Group {
-                            Image("NoLiked")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .padding()
-                                .padding(.top, 35)
+                    VStack{
+                        
+                        HStack{
                             
-                            Text("No favorites yet")
-                                .font(.custom(customFont, size: 25))
-                                .fontWeight(.semibold)
+                            Text("Basket")
+                                .font(.custom(customFont, size: 28).bold())
                             
-                            Text("Hit the like button on each product page to save favorite ones.")
-                                .font(.custom(customFont, size: 18))
-                                .foregroundColor(.gray)
-                                .padding(.horizontal)
-                                .padding(.top, 10)
-                                .multilineTextAlignment(.center)
+                            Spacer()
+                            
+                            Button {
+                                withAnimation{
+                                    showDeleteOption.toggle()
+                                }
+                            } label: {
+                                Image("Delete")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 25, height: 25)
+                            }
+                            .opacity(sharedData.cartProducts.isEmpty ? 0 : 1)
+
                         }
-                    } else {
-                        // Display products
-                        VStack(spacing: 15) {
-                            ForEach(sharedData.likedProducts) { product in
-                                HStack(spacing: 0) {
+                        
+                        // checking if liked products are empty...
+                        if sharedData.cartProducts.isEmpty{
+                            
+                            Group{
+                                Image("NoBasket")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .padding()
+                                    .padding(.top,35)
+                                
+                                Text("No Items added")
+                                    .font(.custom(customFont, size: 25))
+                                    .fontWeight(.semibold)
+                                
+                                Text("Hit the plus button to save into basket.")
+                                    .font(.custom(customFont, size: 18))
+                                    .foregroundColor(.gray)
+                                    .padding(.horizontal)
+                                    .padding(.top,10)
+                                    .multilineTextAlignment(.center)
+                            }
+                        }
+                        else{
+                         
+                            // Displaying Products...
+                            VStack(spacing: 15){
+                                
+                                // For Designing...
+                                ForEach($sharedData.cartProducts){$product in
                                     
-                                    // delete buttons
-                                    if (showDeleteOption) {
-                                        Button {
-                                            deleteProduct(product: product)
-                                        } label: {
-                                            Image(systemName: "minus.circle.fill")
-                                                .font(.title2)
-                                                .foregroundColor(.red)
+                                    HStack(spacing: 0){
+                                        
+                                        if showDeleteOption{
+                                            
+                                            Button {
+                                                deleteProduct(product: product)
+                                            } label: {
+                                                Image(systemName: "minus.circle.fill")
+                                                    .font(.title2)
+                                                    .foregroundColor(.red)
+                                            }
+                                            .padding(.trailing)
+
                                         }
-                                        .padding(.trailing)
+                                        
+                                        CardView(product: product)
                                     }
-                                    
-                                    CardView(product: product)
                                 }
                             }
+                            .padding(.top,25)
+                            .padding(.horizontal,10)
                         }
-                        .padding(.top, 25)
-                        .padding(.horizontal)
                     }
+                    .padding()
                 }
-                .padding()
+                
+                // Showing Total and check out Button...
+                if !sharedData.cartProducts.isEmpty{
+                    
+                    Group{
+                        
+                        HStack{
+                            
+                            Text("Total")
+                                .font(.custom(customFont, size: 14))
+                                .fontWeight(.semibold)
+                            
+                            Spacer()
+                            
+                            Text("$399")
+                                .font(.custom(customFont, size: 18).bold())
+                                .foregroundColor(Color("Purple"))
+                        }
+                        
+                        Button {
+                            
+                        } label: {
+                            
+                            Text("Checkout")
+                                .font(.custom(customFont, size: 18).bold())
+                                .foregroundColor(.white)
+                                .padding(.vertical,18)
+                                .frame(maxWidth: .infinity)
+                                .background(Color("Purple"))
+                                .cornerRadius(15)
+                                .shadow(color: Color.black.opacity(0.05), radius: 5, x: 5, y: 5)
+                        }
+                        .padding(.vertical)
+                    }
+                    .padding(.horizontal,25)
+                }
             }
             .navigationBarHidden(true)
-            .frame(width: .infinity, height: .infinity)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(
-                Color("HomeBG").ignoresSafeArea()
+            
+                Color("HomeBG")
+                    .ignoresSafeArea()
             )
         }
     }
