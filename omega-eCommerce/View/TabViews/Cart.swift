@@ -16,75 +16,110 @@ struct Cart: View {
     
     var body: some View {
         NavigationView {
-            ScrollView(.vertical, showsIndicators: false) {
-                VStack {
-                    // TabView Title
-                    HStack {
-                        Text("Basket")
-                            .font(.custom(customFont, size: 28).bold())
-                        
-                        Spacer()
-                        
-                        Button {
-                            withAnimation{
-                                showDeleteOption.toggle()
+            VStack(spacing: 10) {
+                ScrollView(.vertical, showsIndicators: false) {
+                    VStack {
+                        // TabView Title
+                        HStack {
+                            Text("Basket")
+                                .font(.custom(customFont, size: 28).bold())
+                            
+                            Spacer()
+                            
+                            Button {
+                                withAnimation{
+                                    showDeleteOption.toggle()
+                                }
+                            } label: {
+                                Image("Delete")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 25, height: 25)
                             }
-                        } label: {
-                            Image("Delete")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 25, height: 25)
+                            .opacity(sharedData.cartProducts.isEmpty ? 0 : 1)
                         }
-                        .opacity(sharedData.cartProducts.isEmpty ? 0 : 1)
-                    }
-                    
-                    // Check if cartProducts array is empty
-                    if (sharedData.cartProducts.isEmpty) {
-                        Group {
-                            Image("NoBasket")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .padding()
-                                .padding(.top, 35)
-                            
-                            Text("No items added")
-                                .font(.custom(customFont, size: 25))
-                                .fontWeight(.semibold)
-                            
-                            Text("Hit the plus button to save items into cart.")
-                                .font(.custom(customFont, size: 18))
-                                .foregroundColor(.gray)
-                                .padding(.horizontal)
-                                .padding(.top, 10)
-                                .multilineTextAlignment(.center)
-                        }
-                    } else {
-                        // Display products
-                        VStack(spacing: 15) {
-                            ForEach($sharedData.cartProducts) { $product in
-                                HStack(spacing: 0) {
-                                    
-                                    // delete buttons
-                                    if (showDeleteOption) {
-                                        Button {
-                                            deleteProduct(product: product)
-                                        } label: {
-                                            Image(systemName: "minus.circle.fill")
-                                                .font(.title2)
-                                                .foregroundColor(.red)
+                        
+                        // Check if cartProducts array is empty
+                        if (sharedData.cartProducts.isEmpty) {
+                            Group {
+                                Image("NoBasket")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .padding()
+                                    .padding(.top, 35)
+                                
+                                Text("No items added")
+                                    .font(.custom(customFont, size: 25))
+                                    .fontWeight(.semibold)
+                                
+                                Text("Hit the plus button to save items into cart.")
+                                    .font(.custom(customFont, size: 18))
+                                    .foregroundColor(.gray)
+                                    .padding(.horizontal)
+                                    .padding(.top, 10)
+                                    .multilineTextAlignment(.center)
+                            }
+                        } else {
+                            // Display products
+                            VStack(spacing: 15) {
+                                ForEach($sharedData.cartProducts) { $product in
+                                    HStack(spacing: 0) {
+                                        
+                                        // delete buttons
+                                        if (showDeleteOption) {
+                                            Button {
+                                                deleteProduct(product: product)
+                                            } label: {
+                                                Image(systemName: "minus.circle.fill")
+                                                    .font(.title2)
+                                                    .foregroundColor(.red)
+                                            }
+                                            .padding(.trailing)
                                         }
-                                        .padding(.trailing)
+                                        
+                                        CardView(product: product)
                                     }
-                                    
-                                    CardView(product: product)
                                 }
                             }
+                            .padding(.top, 25)
+                            .padding(.horizontal)
                         }
-                        .padding(.top, 25)
-                        .padding(.horizontal)
+                    }
+                    .padding()
+                }
+                
+                 // Show total and checkout button
+                if (!sharedData.cartProducts.isEmpty) {
+                    Group {
+                        HStack {
+                            Text("Total")
+                                .font(.custom(customFont, size: 14))
+                                .fontWeight(.semibold)
+                            
+                            Spacer()
+                            
+                            Text("$399")
+                                .font(.custom(customFont, size: 18).bold())
+                                .foregroundColor(Color("Purple"))
+                        }
+                        .padding()
+                        
+                        Button {
+                            
+                        } label: {
+                            Text("Check out")
+                                .font(.custom(customFont, size: 18).bold())
+                                .foregroundColor(.white)
+                                .padding(.vertical, 18)
+                                .frame(maxWidth: .infinity)
+                                .background(Color("Purple"))
+                                .cornerRadius(15)
+                                .shadow(color: Color.black.opacity(0.05), radius: 5, x: 5, y: 5)
+                        }
+                        .padding(.horizontal, 25)
+                        .padding(.vertical)
                     }
                 }
-                .padding()
             }
             .navigationBarHidden(true)
             .frame(width: .infinity, height: .infinity)
