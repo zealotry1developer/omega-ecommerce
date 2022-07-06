@@ -76,8 +76,8 @@ struct Cart: View {
                                             }
                                             .padding(.trailing)
                                         }
-                                        
-                                        CardView(product: product)
+                                         
+                                        CardView(product: $product)
                                     }
                                 }
                             }
@@ -98,11 +98,11 @@ struct Cart: View {
                             
                             Spacer()
                             
-                            Text("$399")
+                            Text(sharedData.getTotalPrice())
                                 .font(.custom(customFont, size: 18).bold())
                                 .foregroundColor(Color("Purple"))
                         }
-                        .padding()
+                        
                         
                         Button {
                             
@@ -116,51 +116,18 @@ struct Cart: View {
                                 .cornerRadius(15)
                                 .shadow(color: Color.black.opacity(0.05), radius: 5, x: 5, y: 5)
                         }
-                        .padding(.horizontal, 25)
                         .padding(.vertical)
                     }
+                    .padding(.horizontal, 25)
                 }
             }
             .navigationBarHidden(true)
-            .frame(width: .infinity, height: .infinity)
-            .background(
-                Color("HomeBG").ignoresSafeArea()
-            )
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(Color("HomeBG").ignoresSafeArea())
         }
     }
     
-    @ViewBuilder
-    func CardView(product: Product) -> some View {
-        HStack(spacing: 15) {
-            Image(product.productImage)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 100, height: 100)
-            
-            VStack(alignment: .leading, spacing: 8) {
-                Text(product.title)
-                    .font(.custom(customFont, size: 18).bold())
-                    .lineLimit(1)
-                     
-                Text(product.subtitle)
-                    .font(.custom(customFont, size: 17))
-                    .fontWeight(.semibold)
-                    .foregroundColor(Color("Purple"))
-                    .lineLimit(1)
-                
-                Text("Type: \(product.type.rawValue)")
-                    .font(.custom(customFont, size: 13))
-                    .foregroundColor(.gray)
-                    .lineLimit(1)
-            }
-        }
-        .padding(.horizontal, 10)
-        .padding(.vertical, 10)
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .background(
-            Color.white.cornerRadius(25)
-        )
-    }
+
     
     func deleteProduct(product: Product) {
         if let index = sharedData.cartProducts.firstIndex(where: { currentProduct in
@@ -180,5 +147,70 @@ struct Cart_Previews: PreviewProvider {
     static var previews: some View {
         Cart()
             .environmentObject(SharedDataViewModel())
+    }
+}
+
+struct CardView: View {
+    
+    // Making Product as Binding to update in Real Time
+    @Binding var product: Product
+    
+    var body: some View {
+        HStack(spacing: 15) {
+            Image(product.productImage)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 100, height: 100)
+            
+            VStack(alignment: .leading, spacing: 8) {
+                Text(product.title)
+                    .font(.custom(customFont, size: 18).bold())
+                    .lineLimit(1)
+                     
+                Text(product.subtitle)
+                    .font(.custom(customFont, size: 17))
+                    .fontWeight(.semibold)
+                    .foregroundColor(Color("Purple"))
+                    .lineLimit(1)
+                
+                // Quantity button
+                HStack(spacing: 10) {
+                    Text("Quantity")
+                        .font(.custom(customFont, size: 14))
+                        .foregroundColor(.gray)
+                    
+                    Button {
+                        product.quantity = (product.quantity > 0 ? (product.quantity - 1) : 0)
+                    } label: {
+                        Image(systemName: "minus")
+                            .font(.caption)
+                            .foregroundColor(.white)
+                            .background(Color("Quantity"))
+                            .cornerRadius(4)
+                    }
+                    
+                    Text("\(product.quantity)")
+                        .font(.custom(customFont, size: 14))
+                        .fontWeight(.semibold)
+                        .foregroundColor(.black)
+                    
+                    Button {
+                        product.quantity += 1
+                    } label: {
+                        Image(systemName: "plus")
+                            .font(.caption)
+                            .foregroundColor(.white)
+                            .background(Color("Quantity"))
+                            .cornerRadius(4)
+                    }
+                }
+            }
+        }
+        .padding(.horizontal, 10)
+        .padding(.vertical, 10)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(
+            Color.white.cornerRadius(25)
+        )
     }
 }
