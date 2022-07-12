@@ -128,7 +128,7 @@ struct LoginPage: View {
                             loginData.login()
                         }
                     } label: {
-                        Text("Login")
+                        Text(loginData.registerUser ? "Sign Up" : "Login")
                             .font(.custom(customFont, size: 20).bold())
                             .padding(.vertical, 20)
                             .foregroundColor(.white)
