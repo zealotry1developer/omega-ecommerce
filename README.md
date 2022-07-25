@@ -1,4 +1,4 @@
-# omega-eCommerce
+# ecommerce shop app -- Omega
 A basic e-commerce shop with complex animated UI
 
 ## App Demo
