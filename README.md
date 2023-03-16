@@ -1,5 +1,5 @@
 # ecommerce shop app -- Omega
-A basic e-commerce shop with complex animated UI
+A dynamic e-commerce platform featuring a user-friendly, yet intricate animated interface for an elevated online shopping experience.
 
 ## App Demo
 
